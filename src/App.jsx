@@ -1,7 +1,19 @@
-import Quiz from "./components/Quiz/Quiz.jsx";
+import { useState } from 'react';
+import StartScreen from './components/StartScreen/StartScreen';
+import Quiz from './components/Quiz/Quiz';
 
-function App() {
-    return <Quiz />;
-}
+const App = () => {
+    const [isStarted, setIsStarted] = useState(false);
+
+    return (
+        <>
+            {!isStarted ? (
+                <StartScreen onStart={() => setIsStarted(true)} />
+            ) : (
+                <Quiz />
+            )}
+        </>
+    );
+};
 
 export default App;
