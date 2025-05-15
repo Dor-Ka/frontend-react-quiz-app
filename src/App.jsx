@@ -1,13 +1,7 @@
-import './index.css';
 import Quiz from "./components/Quiz/Quiz.jsx";
 
 function App() {
-
-    return (
-        <div className="App">
-            <Quiz />
-        </div>
-    );
+    return <Quiz />;
 }
 
 export default App;
