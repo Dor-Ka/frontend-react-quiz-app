@@ -1,12 +1,29 @@
-import React from 'react';
-import { ResultContainer, ResultTitle, ScoreText, PlayAgainButton } from './ResultScreenStyles';
+import {
+    ResultContainer,
+    ScoreText,
+    Message,
+    RestartButton,
+} from './ResultScreenStyles';
 
-const ResultScreen = ({ score, total, onRestart }) => {
+const ResultScreen = ({ score, totalQuestions, onRestart }) => {
+    const percentage = (score / totalQuestions) * 100;
+    let message = 'Good effort!';
+
+    if (percentage === 100) {
+        message = 'Perfect score! 🎉';
+    } else if (percentage >= 70) {
+        message = 'Well done!';
+    } else if (percentage >= 50) {
+        message = 'Not bad!';
+    } else {
+        message = 'Keep practicing!';
+    }
+
     return (
         <ResultContainer>
-            <ResultTitle>Quiz Finished!</ResultTitle>
-            <ScoreText>Your score: {score} / {total}</ScoreText>
-            <PlayAgainButton onClick={onRestart}>Play Again</PlayAgainButton>
+            <ScoreText>Your score: {score}/{totalQuestions}</ScoreText>
+            <Message>{message}</Message>
+            <RestartButton onClick={onRestart}>Restart Quiz</RestartButton>
         </ResultContainer>
     );
 };

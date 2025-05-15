@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import StartScreen from './components/StartScreen/StartScreen';
 import Quiz from './components/Quiz/Quiz';
 import ResultScreen from './components/ResultScreen/ResultScreen';
+import questions from './data/quizData.js';
 
 const App = () => {
     const [screen, setScreen] = useState('start');
     const [score, setScore] = useState(0);
-    const totalQuestions = 2;
+
     const handleStart = () => {
         setScore(0);
         setScreen('quiz');
@@ -25,9 +26,13 @@ const App = () => {
     return (
         <>
             {screen === 'start' && <StartScreen onStart={handleStart} />}
-            {screen === 'quiz' && <Quiz onFinish={handleFinish} />}
+            {screen === 'quiz' && <Quiz questions={questions} onFinish={handleFinish} />}
             {screen === 'result' && (
-                <ResultScreen score={score} total={totalQuestions} onRestart={handleRestart} />
+                <ResultScreen
+                    score={score}
+                    totalQuestions={questions.length}
+                    onRestart={handleRestart}
+                />
             )}
         </>
     );

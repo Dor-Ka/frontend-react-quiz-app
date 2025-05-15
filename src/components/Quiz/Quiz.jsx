@@ -7,20 +7,7 @@ import {
     NextButton,
 } from './QuizStyles';
 
-const questions = [
-    {
-        question: "What is the capital of France?",
-        answers: ["Paris", "London", "Berlin", "Rome"],
-        correctAnswer: "Paris",
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        answers: ["Earth", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: "Mars",
-    },
-];
-
-const Quiz = ({ onFinish }) => {
+const Quiz = ({ questions, onFinish }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [score, setScore] = useState(0);
@@ -63,9 +50,7 @@ const Quiz = ({ onFinish }) => {
                 ))}
             </AnswersContainer>
 
-            {selectedAnswer && (
-                <NextButton onClick={handleNextClick}>Next</NextButton>
-            )}
+            {selectedAnswer && <NextButton onClick={handleNextClick}>Next</NextButton>}
         </QuizContainer>
     );
 };
