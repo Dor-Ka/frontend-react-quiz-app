@@ -12,14 +12,12 @@ It features multiple-choice questions, instant feedback, and a modern UI styled 
 - Styled-components for modular and scoped styling
 - Responsive design for desktop and mobile
 - Deployment using GitHub Pages and Vite
-- ESLint configuration for code quality
 
 ## Installation
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/dor-ka/frontend-react-quiz-app.git](https://github.com/dor-ka/frontend-react-quiz-app.git)
-    ```
+    git clone https://github.com/dor-ka/frontend-react-quiz-app.git    ```
 2.  Navigate to the project folder:
     ```bash
     cd frontend-react-quiz-app
@@ -51,10 +49,10 @@ npm run deploy
 
 ## Technologies Used
 
-* React
-* Vite
-* styled-components
-* normalize.css
+- React
+- Vite
+- styled-components
+- normalize.css
 
 ## License
 
