@@ -7,24 +7,10 @@ import {
     NextButton,
 } from './QuizStyles';
 
-const questions = [
-    {
-        question: "What is the capital of France?",
-        answers: ["Paris", "London", "Berlin", "Rome"],
-        correctAnswer: "Paris",
-    },
-    {
-        question: "Which planet is known as the Red Planet?",
-        answers: ["Earth", "Mars", "Jupiter", "Saturn"],
-        correctAnswer: "Mars",
-    },
-];
-
-const Quiz = () => {
+const Quiz = ({ questions, onFinish }) => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [score, setScore] = useState(0);
-    const [quizFinished, setQuizFinished] = useState(false);
 
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -33,20 +19,22 @@ const Quiz = () => {
     };
 
     const handleNextClick = () => {
-        if (selectedAnswer === currentQuestion.correctAnswer) {
-            setScore(score + 1);
-        }
+        const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+        const updatedScore = isCorrect ? score + 1 : score;
+
         if (currentQuestionIndex + 1 < questions.length) {
+            setScore(updatedScore);
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setSelectedAnswer(null);
         } else {
-            setQuizFinished(true);
+            onFinish(updatedScore);
         }
     };
 
     return (
         <QuizContainer>
             <QuestionTitle>{currentQuestion.question}</QuestionTitle>
+
             <AnswersContainer>
                 {currentQuestion.answers.map((answer, index) => (
                     <AnswerButton
@@ -62,11 +50,7 @@ const Quiz = () => {
                 ))}
             </AnswersContainer>
 
-            {!quizFinished && selectedAnswer !== null && (
-                <NextButton onClick={handleNextClick}>Next</NextButton>
-            )}
-
-            {quizFinished && <div>Your score: {score}/{questions.length}</div>}
+            {selectedAnswer && <NextButton onClick={handleNextClick}>Next</NextButton>}
         </QuizContainer>
     );
 };

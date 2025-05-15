@@ -9,13 +9,13 @@ export const QuizContainer = styled.div`
     max-width: 800px;
     margin: 0 auto;
     min-height: 100vh;
-    background-color: #f9f9f9; /* Dodanie tła */
+    background-color: #f9f9f9; 
 `;
 
 export const QuestionTitle = styled.h2`
     font-size: 28px;
     margin-bottom: 20px;
-    color: #333; /* Kolor tekstu */
+    color: #333; 
     font-weight: 600;
 `;
 
@@ -23,7 +23,7 @@ export const AnswersContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 10px; /* Odstęp między przyciskami */
+    gap: 10px; 
 `;
 
 export const AnswerButton = styled.button`
